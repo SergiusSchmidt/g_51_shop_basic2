@@ -12,6 +12,16 @@ public class Customer {
     private boolean active;
     private List<Product> products = new ArrayList<>();
 
+    public Customer(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Customer(String name, boolean active) {
+        this.name = name;
+        this.active = active;
+    }
+
     public void addProduct(Product product) {
         if (product.isActive())
             products.add(product);

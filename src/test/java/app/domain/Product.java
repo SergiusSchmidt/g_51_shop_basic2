@@ -9,6 +9,17 @@ public class Product {
     private double price;
     private boolean active;
 
+    public Product(Long id, double price) {
+        this.price = price;
+        this.id = id;
+    }
+
+    public Product(String title, double price, boolean active) {
+        this.title = title;
+        this.price = price;
+        this.active = active;
+    }
+
     public Long getId() {
         return id;
     }
