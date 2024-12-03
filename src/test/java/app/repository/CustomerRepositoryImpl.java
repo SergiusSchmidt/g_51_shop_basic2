@@ -64,5 +64,8 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         repository.removeById(1L);
         repository.findAll().forEach(x -> System.out.println(x));
 
+
+
+
     }
 }
