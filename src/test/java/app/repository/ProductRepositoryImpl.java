@@ -36,9 +36,9 @@ public class ProductRepositoryImpl implements ProductRepository {
         Long id = product.getId();
         double newPrice = product.getPrice();
 
-        Product existProduct = findById(id);
-        if (existProduct != null) {
-            existProduct.setPrice(newPrice);
+        Product existedProduct = findById(id);
+        if (existedProduct != null) {
+            existedProduct.setPrice(newPrice);
         }
     }
 
@@ -47,25 +47,4 @@ public class ProductRepositoryImpl implements ProductRepository {
         database.removeIf(x -> x.getId().equals(id));
     }
 
-    public static void main(String[] args) {
-        ProductRepository repository = new ProductRepositoryImpl();
-        repository.save(new Product("Banana", 120, true));
-        repository.save(new Product("Apple", 90, true));
-        repository.save(new Product("Peach", 180, true));
-
-        repository.findAll().forEach(x-> System.out.println(x));
-
-        System.out.println(repository.findById(2L));
-        System.out.println(repository.findById(5L));
-
-        repository.update(new Product(2L,95));
-        System.out.println(repository.findById(2L));
-        System.out.println();
-        repository.removeById(2L);
-        repository.findAll().forEach(x-> System.out.println(x));
-
-
-
-
-    }
 }

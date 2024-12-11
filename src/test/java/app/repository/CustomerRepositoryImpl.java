@@ -21,7 +21,6 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
     @Override
     public List<Customer> findAll() {
-//        return database.values().stream().toList();
         return new ArrayList<>(database.values());
     }
 
@@ -46,26 +45,5 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         database.remove(id);
     }
 
-    public static void main(String[] args) {
 
-        CustomerRepository repository = new CustomerRepositoryImpl();
-        repository.save(new Customer("John", true));
-        repository.save(new Customer("Jack", true));
-        repository.save(new Customer("Jenna", true));
-
-        repository.findAll().forEach(x -> System.out.println(x));
-        System.out.println();
-        System.out.println(repository.findById(3L));
-        System.out.println();
-        System.out.println(repository.findById(1L));
-        repository.update(new Customer(1L, "John Doe"));
-        System.out.println(repository.findById(1L));
-        System.out.println();
-        repository.removeById(1L);
-        repository.findAll().forEach(x -> System.out.println(x));
-
-
-
-
-    }
 }

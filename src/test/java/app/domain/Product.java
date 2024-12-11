@@ -4,14 +4,21 @@ import java.util.Objects;
 
 public class Product {
 
+
+
     private Long id;
     private String title;
     private double price;
     private boolean active;
 
     public Product(Long id, double price) {
-        this.price = price;
         this.id = id;
+        this.price = price;
+    }
+
+    public Product(String title, double price) {
+        this.title = title;
+        this.price = price;
     }
 
     public Product(String title, double price, boolean active) {
@@ -54,6 +61,7 @@ public class Product {
 
     @Override
     public boolean equals(Object o) {
+        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
         return Double.compare(price, product.price) == 0 && active == product.active && Objects.equals(id, product.id) && Objects.equals(title, product.title);

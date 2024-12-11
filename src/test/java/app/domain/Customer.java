@@ -12,6 +12,10 @@ public class Customer {
     private boolean active;
     private List<Product> products = new ArrayList<>();
 
+    public Customer(String name) {
+        this.name = name;
+    }
+
     public Customer(Long id, String name) {
         this.id = id;
         this.name = name;
@@ -23,8 +27,9 @@ public class Customer {
     }
 
     public void addProduct(Product product) {
-        if (product.isActive())
+        if (product.isActive()) {
             products.add(product);
+        }
     }
 
     public List<Product> getAllActiveProducts() {
@@ -55,7 +60,6 @@ public class Customer {
                 .filter(x -> x.isActive())
                 .mapToDouble(x -> x.getPrice())
                 .sum();
-
     }
 
     public double getAllActiveProductsAveragePrice() {
@@ -71,28 +75,12 @@ public class Customer {
         return id;
     }
 
-    public List<Product> getProducts() {
-        return products;
-    }
-
     public void setId(Long id) {
         this.id = id;
     }
 
     public String getName() {
         return name;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        Customer customer = (Customer) o;
-        return active == customer.active && Objects.equals(id, customer.id) && Objects.equals(name, customer.name) && Objects.equals(products, customer.products);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, active, products);
     }
 
     public void setName(String name) {
@@ -105,6 +93,23 @@ public class Customer {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Customer customer = (Customer) o;
+        return active == customer.active && Objects.equals(id, customer.id) && Objects.equals(name, customer.name) && Objects.equals(products, customer.products);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, active, products);
     }
 
     @Override
