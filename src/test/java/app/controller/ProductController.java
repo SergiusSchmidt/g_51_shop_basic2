@@ -57,4 +57,6 @@ public class ProductController {
     public double getActiveProductsAveragePrice() {
         return service.getActiveProductsAveragePrice();
     }
+
+
 }
