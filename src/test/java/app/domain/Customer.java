@@ -26,6 +26,7 @@ public class Customer {
         this.active = active;
     }
 
+    // Метод, который добавляет один продукт в корзину покупателя.
     public void addProduct(Product product) {
         if (product.isActive()) {
             products.add(product);
@@ -114,7 +115,9 @@ public class Customer {
 
     @Override
     public String toString() {
-        return String.format("Покупатель: id - %d, имя - %s, активен - %s.",
-                id, name, active ? "да" : "нет");
+        StringBuilder cart = new StringBuilder("\nКорзина:");
+        products.forEach(x -> cart.append("\n").append(x));
+        return String.format("Покупатель: id - %d, имя - %s.%s",
+                id, name, cart);
     }
 }
